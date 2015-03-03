@@ -7,13 +7,13 @@ cc=g++
 cflags=-c -Wall
 lflags=
 
-objs=$(addprefix $(objdir)/,main.o circuit.o)
+objs=$(addprefix $(objdir)/,main.o circuit.o estimator.o sampler.o)
 
 $(bindir)/go : $(objs)
 	$(cc) -o $(bindir)/go $(objs)
 
-$(objdir)/circuit.o : $(srcdir)/circuit.cc $(hdir)/circuit.h
-	$(cc) $(cflags) -o $(objdir)/circuit.o $(srcdir)/circuit.cc
+$(objdir)/%.o : $(srcdir)/%.cc $(hdir)/%.h
+	$(cc) $(cflags) -o $@ $<
 
 $(objdir)/main.o : $(srcdir)/main.cc
 	$(cc) $(cflags) -o $(objdir)/main.o $(srcdir)/main.cc

@@ -1,8 +1,5 @@
-
-enum io_t{
-  input,
-  output
-};
+#ifndef circuit_h
+#define circuit_h
 
 class Circuit{
   private:
@@ -13,7 +10,7 @@ class Circuit{
   protected:
   public:
     Circuit();
-      // Empty constructor (size implicitly zero)
+      // Empty constructor
     Circuit(int m);
       // Size constructor
     Circuit(const Circuit& C);
@@ -23,8 +20,10 @@ class Circuit{
     Circuit operator=(const Circuit& C);
       // Assignment operator
     int nmodes;
-    double** r;
-    double** phi;
-    double* input;
-    double* output;
+    double** r;       // Reflectivities
+    double** phi;     // Phases
+    double* input;    // Input losses
+    double* output;   // Output losses
 };
+
+#endif
