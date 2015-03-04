@@ -1,6 +1,8 @@
 #ifndef sampler_h
 #define sampler_h
 
+#include <stdexcept>
+
 class Event{
   private:
     int *modes;

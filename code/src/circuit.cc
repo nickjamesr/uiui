@@ -86,3 +86,29 @@ void Circuit::setoffsets(void){
     phi[d]=r[d]+nmodes*(nmodes-1)/2;
   }
 }
+
+double& Circuit::reflectivity(int i, int j){
+  if (i<0 || i>nmodes-2 || j<=i || j>=nmodes){
+    throw std::out_of_range("Invalid index into reflectivity");
+  }
+  return r[i][j];
+}
+
+double& Circuit::phase(int i, int j){
+  if (i<0 || i>nmodes-2 || j<=i || j>=nmodes){
+    throw std::out_of_range("Invalid index into phase");
+  }
+  return phi[i][j];
+}
+
+double& Circuit::coupling(io_t io, int i){
+  if (i<0 || i>=nmodes){
+    throw std::out_of_range("Invalid index into coupling");
+  }
+  if (io==io_input){
+    return input[i];
+  }
+  else{
+    return output[i];
+  }
+}

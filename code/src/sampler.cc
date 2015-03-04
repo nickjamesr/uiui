@@ -1,4 +1,6 @@
 
+#include <exception>
+
 #include "heads/sampler.h"
 
 Event::Event(){
@@ -61,11 +63,9 @@ int& Event::operator[](int i){
  * return : reference to position of i-th photon, m[i]
  */
   if (i<0 || i>=nphotons){ // range check
-    return modes[i];
+    throw std::out_of_range("Invalid index into event");
   }
-  else{
-    return modes[i];
-  }
+  return modes[i];
 }
 
 
